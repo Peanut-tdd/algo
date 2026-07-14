@@ -12,22 +12,22 @@ func main() {
 	nums := []int{4, 5, 6, 7, 0, 1, 2}
 
 	k := arrKsearch(nums, 5)
-	fmt.Println(k)
-
+	fmt.Println(k) //5
+	fmt.Println(arrKsearch(nums, 0))
 }
 
 func arrKsearch(arr []int, target int) int {
 
 	left, right := 0, len(arr)-1
 
-	for left < right {
+	for left <= right {
 		mid := left + (right-left)/2
 		if arr[mid] == target {
 			return mid
 		}
 
-		if arr[left] <= arr[mid] {
-			if arr[left] <= target && target < arr[mid] {
+		if arr[left] <= arr[mid] { //左侧有序
+			if arr[left] <= target && target < arr[mid] { //target小于mid，偏移量向左移，反之向右移
 				right = mid - 1
 			} else {
 				left = mid + 1
@@ -35,9 +35,9 @@ func arrKsearch(arr []int, target int) int {
 
 		} else {
 			if arr[mid] <= target && target < arr[right] {
-				right = mid - 1
-			} else {
 				left = mid + 1
+			} else {
+				right = mid - 1
 			}
 
 		}
