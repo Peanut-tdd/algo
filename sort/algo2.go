@@ -13,7 +13,7 @@ func main() {
 
 	k := arrKsearch(nums, 5)
 	fmt.Println(k) //5
-	fmt.Println(arrKsearch(nums, 0))
+	fmt.Println(arrKsearch(nums, 2))
 }
 
 func arrKsearch(arr []int, target int) int {
@@ -34,7 +34,7 @@ func arrKsearch(arr []int, target int) int {
 			}
 
 		} else {
-			if arr[mid] <= target && target < arr[right] {
+			if arr[mid] <= target && target <= arr[right] {
 				left = mid + 1
 			} else {
 				right = mid - 1
